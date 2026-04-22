@@ -1,0 +1,94 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden; /* 🚫 prevents horizontal scrolling */
+}
+
+.second-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    z-index: 1;
+  }
+
+  .living-section{
+    background: url("../../images/hero/living.jfif") center/cover no-repeat;
+  }
+  .dining-section{
+    background: url("../../images/hero/dining.jfif") center/cover no-repeat;
+  }
+  
+  .second-section .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .second-section .overlay h2 {
+    font-family: "Playfair Display", serif; /* Elegant serif font */
+    font-size: 1rem;
+    font-weight: 400;
+    color: white; /* Royal gold tone */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .second-section .overlay h2::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #b8860b, #ffd700);
+    border-radius: 2px;
+  }
+  
+  .second-section .overlay p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1rem;
+    color: #e5e5e5;
+    max-width: 750px;
+    margin: 35px auto 0;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+  }
+  .btn {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .btn:hover {
+    background:rgba(212, 175, 55, 0.25)
+    
+  }
+  
+  
+  

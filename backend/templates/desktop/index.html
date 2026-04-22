@@ -1,0 +1,236 @@
+{% extends "desktop/base.html" %}
+
+{% block title %}ZDN Home – Modern Furniture{% endblock %}
+
+{% block content %}
+
+  <!-- HERO: VIDEO -->
+  <section class="hero-visual">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="{{ url_for('static', filename='video/video.mp4') }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    {# Optional: image slider fallback
+    <div class="hero-slider">
+      <img src="{{ url_for('static', filename='images/hero1.jpg') }}" class="hero-slide active" alt="ZDN Home Hero 1">
+      <img src="{{ url_for('static', filename='images/hero2.jpg') }}" class="hero-slide" alt="ZDN Home Hero 2">
+    </div>
+    #}
+
+    <div class="hero-overlay">
+      <div class="hero-text-block">
+        <p class="hero-kicker">ZIDANE HOME</p>
+        <h1 class="hero-title">Luxury Modern Furniture.</h1>
+        <p class="hero-subtitle">
+          Calm, minimal, contemporary interiors crafted with precision.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTIONS CAROUSEL -->
+  <section class="collections-section">
+    <h2>Explore ZIDANE HOME</h2>
+
+    <div class="carousel-wrapper">
+      <!-- LEFT BUTTON -->
+      <button class="carousel-btn left" type="button">&#10094;</button>
+
+      <!-- CAROUSEL TRACK -->
+      <div class="carousel sections-carousel">
+        <!-- LIVING -->
+        <a href="{{ url_for('living_room') }}" class="section-card">
+          <img
+            src="{{ url_for('static', filename='images/carousel-section/living.jfif') }}"
+            alt="ZDN Home – Living Room"
+          >
+          <div class="section-label">Living</div>
+        </a>
+
+        <!-- DINING -->
+        <a href="{{ url_for('dining_room') }}" class="section-card">
+          <img
+            src="{{ url_for('static', filename='images/carousel-section/dining.jpg') }}"
+            alt="ZDN Home – Dining Room"
+          >
+          <div class="section-label">Dining</div>
+        </a>
+
+        <!-- BEDROOM -->
+        <a href="{{ url_for('bedroom') }}" class="section-card">
+          <img
+            src="{{ url_for('static', filename='images/carousel-section/bedroom.jpg') }}"
+            alt="ZDN Home – Bedroom"
+          >
+          <div class="section-label">Bedroom</div>
+        </a>
+
+        <!-- OFFICE -->
+        <a href="{{ url_for('office') }}" class="section-card">
+          <img
+            src="{{ url_for('static', filename='images/carousel-section/office.jpg') }}"
+            alt="ZDN Home – Office"
+          >
+          <div class="section-label">Office</div>
+        </a>
+
+        <!-- KITCHEN -->
+        <a href="{{ url_for('kitchen') }}" class="section-card">
+          <img
+            src="{{ url_for('static', filename='images/carousel-section/kitchen.jfif') }}"
+            alt="ZDN Home – Kitchen"
+          >
+          <div class="section-label">Kitchen</div>
+        </a>
+      </div>
+
+      <!-- RIGHT BUTTON -->
+      <button class="carousel-btn right" type="button">&#10095;</button>
+    </div>
+  </section>
+
+ <!-- FEATURED COLLECTION -->
+<!-- FEATURED COLLECTION -->
+{% if featured_product %}
+<section class="featured-collection">
+
+  <div class="featured-content">
+    <p class="featured-kicker">FEATURED COLLECTION</p>
+
+    <h2 class="featured-title">
+      {{ featured_product.collection or featured_product.name }}
+    </h2>
+
+    <p class="featured-desc">
+      {{ featured_product.description }}
+    </p>
+
+    <a href="{{ url_for('product_detail', product_id=featured_product.id) }}"
+       class="featured-btn">
+      View This Piece
+    </a>
+  </div>
+
+  <div class="featured-visual">
+    {% if featured_product.images %}
+      <img
+        src="{{ url_for('static', filename=featured_product.images[0]) }}"
+        class="featured-image"
+        alt="{{ featured_product.name }}">
+    {% endif %}
+  </div>
+
+</section>
+{% endif %}
+
+
+
+
+  <!-- OUR DESIGN PHILOSOPHY -->
+<section class="philosophy-section">
+    <div class="philosophy-inner">
+  
+      <div class="philosophy-media">
+        <img
+          src="{{ url_for('static', filename='images/philosophy/fur.jfif') }}"
+          alt="Craftsmanship at ZDN Home"
+        >
+      </div>
+  
+      <div class="philosophy-copy">
+        <div class="philosophy-header">
+          <p class="philosophy-kicker">OUR DESIGN PHILOSOPHY</p>
+          <h2 class="philosophy-title">Calm, modern and quietly luxurious.</h2>
+          <p class="philosophy-intro">
+            At ZIDANE Home we design furniture that feels soft, balanced and timeless.
+            Each piece is created to live beautifully in real spaces, not just in photos.
+          </p>
+        </div>
+  
+        <div class="philosophy-grid">
+          <div class="philosophy-item">
+            <h3>Soft Modern Lines</h3>
+            <p>
+              Clean silhouettes, rounded edges and balanced proportions that keep each
+              piece modern without feeling cold or sharp.
+            </p>
+          </div>
+  
+          <div class="philosophy-item">
+            <h3>Comfort First</h3>
+            <p>
+              Deep seats, supportive cushions and tactile fabrics chosen so your sofa
+              feels as good to live with as it looks.
+            </p>
+          </div>
+  
+          <div class="philosophy-item">
+            <h3>Honest Materials</h3>
+            <p>
+              Solid beech wood, high-density foam and carefully selected textiles
+              built for durability and long-term use.
+            </p>
+          </div>
+  
+          <div class="philosophy-item">
+            <h3>Quiet Luxury</h3>
+            <p>
+              Neutral palettes and subtle detailing that age gracefully and sit easily
+              with architecture, art and everyday life.
+            </p>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+  <!-- SIGNATURE PIECES -->
+  <section class="signature-section">
+    <div class="signature-inner">
+      <div class="signature-header">
+        <h2>Signature Pieces</h2>
+        <p>Curated modern luxury pieces that embody the spirit of ZIDANE Home.</p>
+      </div>
+  
+      {% if signature_products %}
+        <div class="signature-track">
+          {% for product in signature_products %}
+            <a href="{{ url_for('product_detail', product_id=product.id) }}" class="signature-card">
+              <div class="signature-image-wrapper">
+                {% if product.images and product.images[0] %}
+                  <img src="{{ url_for('static', filename=product.images[0]) }}" alt="{{ product.name }}">
+                {% endif %}
+              </div>
+              <div class="signature-info">
+                {% if product.collection %}
+                  <p class="signature-collection">{{ product.collection }}</p>
+                {% endif %}
+                <h3 class="signature-name">{{ product.name }}</h3>
+                {% if product.category %}
+                  <p class="signature-category">{{ product.category|capitalize }}</p>
+                {% endif %}
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="signature-empty">
+          Signature pieces will appear here once you mark them as “Signature” in the admin panel.
+        </p>
+      {% endif %}
+    </div>
+  </section>
+  
+
+  
+  
+  
+
+
+  
+  
+  
+
+{% endblock %}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZDN Home — Modern Luxury Furniture</title>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+            />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desktop/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desktop/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desktop/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desktop/product_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desktop/product_detail.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desktop/search.css') }}">
+
+
+    
+    
+
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    {% include 'desktop/navbar.html' %}
+
+    <!-- ================= MAIN PAGE CONTENT ================= -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    {% include 'desktop/footer.html' %}
+
+    <!-- ================= JS ================= -->
+    <script src="{{ url_for('static', filename='js/desktop/navbar.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/desktop/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/desktop/main.js') }}"></script>
+    
+    
+</body>
+</html>

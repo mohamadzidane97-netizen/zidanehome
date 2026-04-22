@@ -1,0 +1,244 @@
+{% extends "desktop/base.html" %}
+
+{% block title %}{{ product.name }} – ZDN Home{% endblock %}
+
+{% block content %}
+
+<section class="pd-page" data-product-id="{{ product.id }}">
+  <div class="pd-inner">
+
+    <!-- BREADCRUMB -->
+    <nav class="pd-breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ url_for('index') }}">Home</a>
+      <span>·</span>
+      {% if product.room %}
+        <a href="{{ url_for(product.room ~ '_room') }}">
+          {{ product.room|capitalize }}
+        </a>
+        <span>·</span>
+      {% elif product.collection %}
+        <span>{{ product.collection }}</span>
+        <span>·</span>
+      {% endif %}
+      <span aria-current="page">{{ product.name }}</span>
+    </nav>
+
+    <!-- MAIN LAYOUT -->
+    <div class="pd-main">
+
+      <!-- LEFT: GALLERY -->
+      <div class="pd-gallery">
+
+        <!-- MAIN IMAGE WITH ARROWS -->
+        <div class="pd-main-image">
+          {% if product.images and product.images[0] %}
+            <button class="pd-main-nav pd-main-nav--prev"
+                    type="button"
+                    aria-label="Previous image">‹</button>
+
+            <img src="{{ url_for('static', filename=product.images[0]) }}"
+                 alt="{{ product.collection or '' }} {{ product.name }}"
+                 id="pd-main-img">
+
+            <button class="pd-main-nav pd-main-nav--next"
+                    type="button"
+                    aria-label="Next image">›</button>
+          {% else %}
+            <div class="pd-main-placeholder"></div>
+          {% endif %}
+        </div>
+
+        <!-- THUMBNAILS (INITIAL – JS will overwrite when fabrics change) -->
+        {% if product.images and product.images|length > 1 %}
+          <div class="pd-thumbs" aria-label="More product images">
+            {% for img in product.images %}
+              <button class="pd-thumb-btn"
+                      type="button"
+                      data-img="{{ url_for('static', filename=img) }}"
+                      data-index="{{ loop.index0 }}">
+                <img src="{{ url_for('static', filename=img) }}"
+                     loading="lazy"
+                     alt="{{ product.name }} thumbnail {{ loop.index }}">
+              </button>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="pd-thumbs"></div>
+        {% endif %}
+      </div>
+
+      <!-- RIGHT: INFO -->
+      <div class="pd-info">
+
+        {% if product.collection %}
+          <p class="pd-collection">
+            {{ product.collection }}
+          </p>
+        {% endif %}
+
+        <h1 class="pd-name">
+          {{ product.name }}
+        </h1>
+
+        {% if product.category %}
+          <p class="pd-category">
+            {{ product.category|replace('_', ' ')|title }}
+          </p>
+        {% endif %}
+
+        {% if product.description %}
+          <p class="pd-description">
+            {{ product.description }}
+          </p>
+        {% else %}
+          <p class="pd-description pd-description--placeholder">
+            Add a product description in the admin panel to show details here.
+          </p>
+        {% endif %}
+
+        <!-- FABRIC VARIANTS -->
+        {% if product.fabrics %}
+        <div class="pd-fabrics">
+          <p class="pd-fabrics-label">Fabrics</p>
+          <div class="pd-fabrics-swatches">
+            {% for f in product.fabrics %}
+              <button
+                type="button"
+                class="pd-fabric-swatch{% if loop.first %} is-active{% endif %}"
+                data-images="{% for img in f.images %}{{ url_for('static', filename=img) }}{% if not loop.last %}|{% endif %}{% endfor %}"
+                data-name="{{ f.name }}"
+                style="--swatch-color: {{ f.hex or '#ddd' }};"
+              >
+                <span class="pd-swatch-dot"></span>
+                <span class="pd-swatch-name">{{ f.name }}</span>
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- DIMENSIONS / MATERIALS -->
+        <div class="pd-meta-grid">
+          {% if product.dimensions %}
+            <div class="pd-meta-card">
+              <p class="pd-meta-label">Dimensions</p>
+              <p class="pd-meta-value">{{ product.dimensions }}</p>
+            </div>
+          {% endif %}
+
+          {% if product.material %}
+            <div class="pd-meta-card">
+              <p class="pd-meta-label">Materials</p>
+              <p class="pd-meta-value">{{ product.material }}</p>
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- FINISHES TEXT -->
+        {% if product.finishes %}
+        <section class="pd-finishes">
+          <h2 class="pd-finishes-title">Finishes &amp; Fabrics</h2>
+          <p class="pd-finishes-text">
+            {{ product.finishes }}
+          </p>
+        </section>
+        {% endif %}
+
+        <div class="pd-actions">
+          <a
+            href="https://wa.me/201111057128?text=Hello%20ZDN%20Home,%0A%0AI%E2%80%99m%20interested%20in%20the%20{{ product.name }}{% if product.collection %}%20from%20the%20{{ product.collection }}%20collection{% endif %}.%0A%0APlease%20share%20more%20details."
+            target="_blank"
+            rel="noopener"
+            class="pd-cta-btn pd-cta-whatsapp"
+          >
+            Request this piece
+          </a>
+
+          <p class="pd-note">
+            You will be redirected to WhatsApp to speak directly with our team.
+            Each piece is made to order; dimensions, finishes and fabrics can be tailored on request.
+          </p>
+        </div>
+
+
+      </div> <!-- /pd-info -->
+
+    </div> <!-- /pd-main -->
+
+  </div>
+</section>
+
+{% if related_products and related_products|length > 0 %}
+<section class="pd-related">
+  <div class="pd-related-inner">
+
+    <header class="pd-related-header">
+      <p class="pd-related-kicker">More from this collection</p>
+      <h2 class="pd-related-title">
+        Pair with
+      </h2>
+    </header>
+
+    <div class="pd-related-track">
+      {% for item in related_products %}
+        <a href="{{ url_for('product_detail', product_id=item.id) }}"
+           class="pd-related-card">
+
+          <div class="pd-related-img-wrap">
+            {% if item.images and item.images[0] %}
+              <img src="{{ url_for('static', filename=item.images[0]) }}"
+                   loading="lazy"
+                   alt="{{ item.collection or '' }} {{ item.name }}">
+            {% endif %}
+          </div>
+
+          <div class="pd-related-info">
+            {% if item.collection %}
+              <p class="pd-related-collection">{{ item.collection }}</p>
+            {% endif %}
+            <p class="pd-related-name">{{ item.name }}</p>
+            {% if item.category %}
+              <p class="pd-related-meta">
+                {{ item.category|replace('_', ' ')|title }}
+              </p>
+            {% endif %}
+          </div>
+
+        </a>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+<!-- STRUCTURED DATA: PRODUCT (SEO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "{{ product.name|e }}",
+  {% if product.collection %}
+  "category": "{{ product.collection|e }}",
+  {% elif product.category %}
+  "category": "{{ product.category|replace('_', ' ')|title|e }}",
+  {% endif %}
+  "brand": {
+    "@type": "Brand",
+    "name": "ZDN Home"
+  },
+  {% if product.description %}
+  "description": "{{ product.description|e }}",
+  {% endif %}
+  {% if product.images and product.images[0] %}
+  "image": "{{ url_for('static', filename=product.images[0], _external=True) }}",
+  {% endif %}
+  "url": "{{ url_for('product_detail', product_id=product.id, _external=True) }}"
+}
+</script>
+
+
+<!-- JS for gallery + fabrics -->
+<script src="{{ url_for('static', filename='js/desktop/product_detail.js') }}"></script>
+
+{% endblock %}

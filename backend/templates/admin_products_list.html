@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ZDN Home – Products Admin</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 1.3rem;
+      margin: 0;
+    }
+    .subtitle {
+      font-size: 0.8rem;
+      color: #777;
+    }
+    .btn {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+    .btn-dark {
+      background: #111;
+      color: #fff;
+    }
+    .btn-light {
+      background: #e5e5e5;
+      color: #111;
+    }
+    .btn-small {
+      padding: 4px 8px;
+      font-size: 0.75rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    th, td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #eee;
+      font-size: 0.85rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #fafafa;
+      font-weight: 600;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: #eee;
+    }
+    .tag-green {
+      background: #d8f5d2;
+    }
+    .tag-red {
+      background: #fcdcdc;
+    }
+    .empty {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 12px;
+    }
+    .flash {
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    form.inline {
+      display: inline-block;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Products Admin</h1>
+      <div class="subtitle">
+        Products stored in the database (your public site still uses Python lists for now).
+      </div>
+    </div>
+    <div>
+      <a href="{{ url_for('admin_products_new') }}" class="btn btn-dark">+ Add Product</a>
+      <a href="{{ url_for('admin_logout') }}" class="btn btn-light">Logout</a>
+    </div>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, msg in messages %}
+        <div class="flash">{{ msg }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  {% if products %}
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name / Room / Category</th>
+          <th>Collection</th>
+          <th>Signature</th>
+          <th>Active</th>
+          <th>Images</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in products %}
+        <tr>
+          <td>{{ p.id }}</td>
+          <td>
+            <strong>{{ p.name }}</strong><br>
+            <span class="tag">{{ p.room }}</span>
+            <span class="tag">{{ p.category }}</span>
+          </td>
+          <td>{{ p.collection or '—' }}</td>
+          <td>
+            {% if p.is_signature %}
+              <span class="tag tag-green">Yes</span>
+            {% else %}
+              <span class="tag">No</span>
+            {% endif %}
+          </td>
+          <td>
+            {% if p.is_active %}
+              <span class="tag tag-green">Active</span>
+            {% else %}
+              <span class="tag tag-red">Hidden</span>
+            {% endif %}
+          </td>
+          <td>
+            {% if p.images %}
+              {{ p.images[0] }}{% if p.images|length > 1 %} (+{{ p.images|length - 1 }} more){% endif %}
+            {% else %}
+              –
+            {% endif %}
+          </td>
+          <td>
+            <a href="{{ url_for('admin_products_edit', product_id=p.id) }}" class="btn btn-small btn-light">Edit</a>
+            <form class="inline"
+                  method="post"
+                  action="{{ url_for('admin_products_delete', product_id=p.id) }}"
+                  onsubmit="return confirm('Delete this product?');">
+              <button type="submit" class="btn btn-small btn-light">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="empty">
+      No products in database yet.<br>
+      Use “Add Product” to create one.
+    </p>
+  {% endif %}
+</body>
+</html>

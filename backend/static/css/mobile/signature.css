@@ -1,0 +1,89 @@
+/* SIGNATURE PIECES – MOBILE */
+
+.m-signature-section {
+  padding: 36px 0;
+  background: #f6f6f6;
+}
+
+.m-signature-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.m-signature-header {
+  margin-bottom: 16px;
+}
+
+.m-signature-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.m-signature-header p {
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+/* Horizontal scroll area */
+.m-signature-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 4px 16px 10px;
+}
+
+.m-signature-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card */
+.m-signature-card {
+  flex: 0 0 88%;         /* width of each card in viewport */
+  max-width: 360px;
+  scroll-snap-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.m-signature-image-wrapper img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  border-radius: 14px;
+  display: block;
+}
+
+/* Text info */
+.m-signature-info {
+  padding-top: 10px;
+}
+
+.m-signature-collection {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 2px;
+}
+
+.m-signature-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.m-signature-category {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* Empty state */
+.m-signature-empty {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-top: 10px;
+}

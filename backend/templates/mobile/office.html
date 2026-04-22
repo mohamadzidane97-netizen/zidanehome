@@ -1,0 +1,56 @@
+{% extends 'mobile/base.html' %}
+
+{% block title %}Office – ZDN Home{% endblock %}
+
+{% block content %}
+<section class="m-room-products-only">
+
+  <!-- Header -->
+  <div class="m-room-header">
+    <h1>Office</h1>
+    <p>Modern office furniture designed for focus, comfort, and elegance.</p>
+  </div>
+
+  <!-- Filters (optional – works with your existing logic) -->
+  <div class="m-filter-bar">
+    <a href="{{ url_for('office', filter='all') }}"
+       class="{{ 'active' if selected_filter == 'all' else '' }}">All</a>
+
+    <a href="{{ url_for('office', filter='desk') }}"
+       class="{{ 'active' if selected_filter == 'desk' else '' }}">Desks</a>
+
+    <a href="{{ url_for('office', filter='chair') }}"
+       class="{{ 'active' if selected_filter == 'chair' else '' }}">Chairs</a>
+
+    <a href="{{ url_for('office', filter='storage') }}"
+       class="{{ 'active' if selected_filter == 'storage' else '' }}">Storage</a>
+  </div>
+
+  <!-- Products -->
+  {% if products %}
+    <div class="m-products-grid">
+      {% for product in products %}
+        <a href="{{ url_for('product_detail', product_id=product.id) }}"
+           class="m-product-card">
+
+          {% if product.images and product.images[0] %}
+            <img src="{{ url_for('static', filename=product.images[0]) }}"
+                 alt="{{ product.name }}">
+          {% endif %}
+
+          <div class="m-product-info">
+            <h3>{{ product.name }}</h3>
+            {% if product.collection %}
+              <p>{{ product.collection }}</p>
+            {% endif %}
+          </div>
+
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="m-empty-state">Office products will appear here soon.</p>
+  {% endif %}
+
+</section>
+{% endblock %}

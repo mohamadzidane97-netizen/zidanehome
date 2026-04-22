@@ -1,0 +1,92 @@
+<header>
+    <!-- Top row: menu toggle, logo, icons -->
+    <div class="top-row">
+        <div class="header-left">
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+
+        <div class="header-center">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo/blk_logo.png') }}" alt="ZDN Home Logo">
+            </a>
+        </div>
+
+        <div class="header-right">
+           <button class="icon-btn" id="openSearchBtn" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
+
+            <button class="icon-btn" aria-label="Map">
+                <i class="fas fa-map-marker-alt"></i>
+            </button>
+        </div>
+
+
+    </div>
+
+    <!-- Main navbar -->
+    <nav class="navbar">
+        <ul class="nav-list">
+            <!-- Close button for main slide -->
+            <button class="close-btn" id="openSearchBtn"><i class="fas fa-times"></i></button>
+
+            <!-- Main Categories -->
+            <li class="has-submenu">
+                <a href="#">Living</a>
+                <ul class="submenu second-slide">
+                    <button class="close-btn"><i class="fas fa-times"></i></button>
+                    <li><a href="{{ url_for('living_room' , filter='sofa') }}">Sofa</a></li>
+                    <li><a href="{{ url_for('living_room' , filter='coffeetable') }}">Coffee Table</a></li>
+                    <li><a href="{{ url_for('living_room' , filter='sidetable') }}">Side Table</a></li>
+                    <li><a href="#">Console</a></li>
+                    <li><a href="#">TV Unit</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a href="#">Dining</a>
+                <ul class="submenu second-slide">
+                    <button class="close-btn"><i class="fas fa-times"></i></button>
+                    <li><a href="{{ url_for('dining_room' , filter='diningroom') }}">Dining Room</a></li>
+                    <li><a href="{{ url_for('dining_room' , filter='diningchair') }}">Dining Chair</a></li>
+                    <li><a href="{{ url_for('dining_room' , filter='buffets') }}">Buffets</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a href="#">Bedroom</a>
+                <ul class="submenu second-slide">
+                    <button class="close-btn"><i class="fas fa-times"></i></button>
+                    <li><a href="{{ url_for('bedroom' , filter='bed') }}">Bed</a></li>
+                    <li><a href="{{ url_for('bedroom' , filter='wardrobe') }}">Wardrobe</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a href="#">Office</a>
+                <ul class="submenu second-slide">
+                    <button class="close-btn"><i class="fas fa-times"></i></button>
+                    <li><a href="{{ url_for('office' , filter='desk') }}">Desk</a></li>
+                    <li><a href="{{ url_for('office' , filter='officechair') }}">Office Chair</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a href="#">Kitchen</a>
+                <ul class="submenu second-slide">
+                    <button class="close-btn"><i class="fas fa-times"></i></button>
+                    <li><a href="{{ url_for('kitchen' , filter='cabinet') }}">Cabinet</a></li>
+                    <li><a href="{{ url_for('kitchen' , filter='island') }}">Kitchen Island</a></li>
+                </ul>
+            </li>
+             <li class="has-submenu">
+                <a href="#">Kitchen</a>
+                <ul class="submenu second-slide">
+                    <button class="close-btn"><i class="fas fa-times"></i></button>
+                    <li><a href="{{ url_for('kitchen' , filter='cabinet') }}">Cabinet</a></li>
+                    <li><a href="{{ url_for('kitchen' , filter='island') }}">Kitchen Island</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,18 @@
+<footer class="mobile-footer">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <img src="{{ url_for('static', filename='images/logo/1.png') }}" alt="ZDN Home Logo">
+      </div>
+      <div class="footer-links">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('sofa') }}">Collections</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>&copy; {{ current_year }} ZDN Home. All Rights Reserved.</p>
+    </div>
+  </footer>
+  

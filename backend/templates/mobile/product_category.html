@@ -1,0 +1,42 @@
+{% extends 'mobile/base.html' %}
+
+{% block title %}ZDN Home – Product Categories{% endblock %}
+
+{% block content %}
+
+<section class="product-category">
+    <div class="category-header">
+        <h1>Our Collections</h1>
+        <p>Discover luxury categories that define modern living.</p>
+    </div>
+
+    <div class="category-grid">
+        <a href="{{ url_for('living_room') }}" class="category-card">
+            <img src="{{ url_for('static', filename='images/carousel-section/living.jfif') }}" alt="Living Room">
+            <h2>Living Room</h2>
+        </a>
+    
+        <a href="{{ url_for('dining_room') }}" class="category-card">
+            <img src="{{ url_for('static', filename='images/carousel-section/dining.jpg') }}" alt="Dining Room">
+            <h2>Dining Room</h2>
+        </a>
+    
+        <a href="{{ url_for('bedroom') }}" class="category-card">
+            <img src="{{ url_for('static', filename='images/carousel-section/bedroom.jpg') }}" alt="Bedroom">
+            <h2>Bedroom</h2>
+        </a>
+    
+        <a href="{{ url_for('office') }}" class="category-card">
+            <img src="{{ url_for('static', filename='images/carousel-section/office.jpg') }}" alt="Office">
+            <h2>Office</h2>
+        </a>
+    
+        <a href="{{ url_for('kitchen') }}" class="category-card">
+            <img src="{{ url_for('static', filename='images/carousel-section/kitchen.jfif') }}" alt="Kitchen">
+            <h2>Kitchen</h2>
+        </a>
+    </div>
+    
+</section>
+
+{% endblock %}

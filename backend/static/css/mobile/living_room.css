@@ -1,0 +1,108 @@
+/* ===============================
+   LIVING ROOM – PRODUCTS ONLY
+   MOBILE (1 product per row)
+================================ */
+
+/* Page wrapper (space under sticky nav) */
+.m-room-products-only {
+  padding: 90px 16px 40px;
+  background: #f6f6f6;
+}
+
+/* Header */
+.m-room-header {
+  margin-bottom: 16px;
+}
+
+.m-room-header h1 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.m-room-header p {
+  font-size: 13px;
+  opacity: 0.75;
+  margin: 0;
+}
+
+/* Filters (optional) */
+.m-filter-bar {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 12px 0 16px;
+}
+
+.m-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.m-filter-bar a {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  text-decoration: none;
+  color: #111;
+  white-space: nowrap;
+}
+
+.m-filter-bar a.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+/* ===============================
+   PRODUCTS GRID – 1 COLUMN
+================================ */
+
+.m-products-grid {
+  display: grid;
+  grid-template-columns: 1fr;   /* ✅ ONE PRODUCT PER ROW */
+  gap: 18px;
+}
+
+/* Product card */
+.m-product-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Image */
+.m-product-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  border-radius: 16px;
+  display: block;
+  background: #fff;
+}
+
+/* Product info */
+.m-product-info {
+  padding-top: 10px;
+}
+
+.m-product-info h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.m-product-info p {
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* Empty state */
+.m-empty-state {
+  font-size: 13px;
+  opacity: 0.7;
+  text-align: center;
+  margin-top: 20px;
+}

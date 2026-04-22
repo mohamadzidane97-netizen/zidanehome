@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ZDN Home – Mobile{% endblock %}</title>
+
+   <!-- Font -->
+   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+    <!-- Mobile CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile/herotest.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile/second-section.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile/bestseller.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile/product_category.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile/living_room.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile/product_details.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile/carousel-section.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile/signature.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile/search.css') }}">
+
+</head>
+
+
+<body>
+
+    <!-- Mobile Navbar -->
+    {% include 'mobile/navbar.html' %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer (optional) -->
+    {% include 'mobile/footer.html' %}
+
+    <!-- SEARCH OVERLAY -->
+<div class="m-search" id="mSearch" aria-hidden="true">
+  <div class="m-search-backdrop" data-close="1"></div>
+
+  <div class="m-search-panel" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="m-search-top">
+      <div class="m-search-title">Search</div>
+      <button class="m-search-close" id="closeSearchBtn" aria-label="Close">✕</button>
+    </div>
+
+    <div class="m-search-inputWrap">
+      <input
+        id="mSearchInput"
+        class="m-search-input"
+        type="search"
+        placeholder="Search products…"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="m-search-hint" id="mSearchHint">Type at least 2 letters</div>
+
+    <div class="m-search-results" id="mSearchResults"></div>
+  </div>
+</div>
+
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/mobile/navbar.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/mobile/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/mobile/living_room.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/mobile/product_details.js') }}"></script>
+
+</body>
+</html>

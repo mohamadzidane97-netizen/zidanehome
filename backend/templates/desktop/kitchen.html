@@ -1,0 +1,88 @@
+{% extends "desktop/base.html" %}
+
+{% block title %}{{ room_title }} – ZDN Home{% endblock %}
+
+{% block content %}
+
+<section class="room-page">
+  <div class="room-inner">
+
+    <header class="room-header">
+      <p class="room-kicker">ZDN HOME</p>
+      <h1 class="room-title">
+        {{ room_title or "Kitchen" }}
+      </h1>
+      <p class="room-subtitle">
+        Tailored kitchens and islands that mix clean lines, warm materials and functional storage for everyday rituals.
+      </p>
+    </header>
+
+    <div class="room-filters">
+      <span class="room-filters-label">Filter by:</span>
+
+      <a href="{{ url_for('kitchen', filter='all') }}"
+         class="room-filter-pill {% if selected_filter == 'all' %}is-active{% endif %}">
+        All
+      </a>
+
+      <a href="{{ url_for('kitchen', filter='cabinet') }}"
+         class="room-filter-pill {% if selected_filter == 'cabinet' %}is-active{% endif %}">
+        Cabinets
+      </a>
+
+      <a href="{{ url_for('kitchen', filter='island') }}"
+         class="room-filter-pill {% if selected_filter == 'island' %}is-active{% endif %}">
+        Islands
+      </a>
+
+      <a href="{{ url_for('kitchen', filter='table') }}"
+         class="room-filter-pill {% if selected_filter == 'table' %}is-active{% endif %}">
+        Tables
+      </a>
+
+      <a href="{{ url_for('kitchen', filter='barstool') }}"
+         class="room-filter-pill {% if selected_filter == 'barstool' %}is-active{% endif %}">
+        Bar Stools
+      </a>
+    </div>
+
+    {% if products %}
+      <div class="room-grid">
+        {% for product in products %}
+          <a href="{{ url_for('product_detail', product_id=product.id) }}"
+             class="room-card">
+
+            <div class="room-card-image">
+              {% if product.images and product.images[0] %}
+                <img src="{{ url_for('static', filename=product.images[0]) }}"
+                     alt="{{ product.name }}">
+              {% else %}
+                <div class="room-card-placeholder"></div>
+              {% endif %}
+            </div>
+
+            <div class="room-card-info">
+              {% if product.collection %}
+                <p class="room-card-collection">{{ product.collection }}</p>
+              {% endif %}
+              <h3 class="room-card-name">{{ product.name }}</h3>
+              {% if product.category %}
+                <p class="room-card-meta">
+                  {{ product.category|replace('_', ' ')|title }}
+                </p>
+              {% endif %}
+            </div>
+
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="room-empty">
+        No kitchen pieces yet. Add items under <strong>room = "kitchen"</strong> in the admin panel.
+      </p>
+    {% endif %}
+
+  </div>
+</section>
+
+{% endblock %}

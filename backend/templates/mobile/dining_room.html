@@ -1,0 +1,52 @@
+{% extends 'mobile/base.html' %}
+{% block title %}Dining Room – ZDN Home{% endblock %}
+
+{% block content %}
+
+<section class="m-room-products-only">
+
+  <div class="m-room-header">
+    <h1>Dining Room</h1>
+    <p>Explore dining tables, chairs, buffets, and curated dining pieces.</p>
+  </div>
+
+  <!-- Optional filters (works with your render_room_page ?filter=...) -->
+  <div class="m-filter-bar">
+    <a class="{{ 'active' if selected_filter=='all' else '' }}"
+       href="{{ url_for('dining_room', filter='all') }}">All</a>
+
+    <a class="{{ 'active' if selected_filter=='dining_table' else '' }}"
+       href="{{ url_for('dining_room', filter='dining_table') }}">Tables</a>
+
+    <a class="{{ 'active' if selected_filter=='dining_chair' else '' }}"
+       href="{{ url_for('dining_room', filter='dining_chair') }}">Chairs</a>
+
+    <a class="{{ 'active' if selected_filter=='buffet' else '' }}"
+       href="{{ url_for('dining_room', filter='buffet') }}">Buffets</a>
+
+    <a class="{{ 'active' if selected_filter=='console' else '' }}"
+       href="{{ url_for('dining_room', filter='console') }}">Consoles</a>
+  </div>
+
+  {% if products %}
+    <div class="m-products-grid">
+      {% for product in products %}
+        <a href="{{ url_for('product_detail', product_id=product.id) }}" class="m-product-card">
+          {% if product.images and product.images[0] %}
+            <img src="{{ url_for('static', filename=product.images[0]) }}" alt="{{ product.name }}">
+          {% endif %}
+
+          <div class="m-product-info">
+            <h3>{{ product.name }}</h3>
+            {% if product.collection %}<p>{{ product.collection }}</p>{% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="m-empty-state">No products found.</p>
+  {% endif %}
+
+</section>
+
+{% endblock %}

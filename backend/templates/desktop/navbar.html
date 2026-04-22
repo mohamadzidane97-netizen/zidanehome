@@ -1,0 +1,40 @@
+<nav class="nav-desktop">
+  <div class="nav-inner">
+
+    <!-- LEFT: LOGO -->
+    <a href="{{ url_for('index') }}" class="nav-logo" aria-label="Zidane Home">
+      <img
+        src="{{ url_for('static', filename='images/logo/blk_logo.png') }}"
+        alt="Zidane Home logo"
+        class="nav-logo-img"
+      >
+    </a>
+
+    <!-- CENTER: LINKS (Brand in the middle) -->
+    <ul class="nav-links">
+      <li><a href="{{ url_for('index') }}">Home</a></li>
+      <li><a href="{{ url_for('living_room') }}">Living</a></li>
+      <li><a href="{{ url_for('dining_room') }}">Dining</a></li>
+      <li><a href="{{ url_for('bedroom') }}">Bedroom</a></li>
+      <li><a href="{{ url_for('office') }}">Office</a></li>
+
+      <!-- BRAND (CENTER) -->
+      <li class="nav-brand">
+        <a href="{{ url_for('index') }}">ZIDANE&nbsp;HOME</a>
+      </li>
+
+
+      <li><a href="{{ url_for('kitchen') }}">kitchen</a></li>
+      <li><a href="{{ url_for('collections') }}">Collections</a></li>
+      
+      <li><a href="{{ url_for('artwork') }}">Artwork</a></li>
+      <li><a href="{{ url_for('contact') }}">Contact</a></li>
+    </ul>
+
+    <!-- RIGHT: SEARCH -->
+    <form class="nav-search" action="{{ url_for('search') }}" method="get" role="search">
+      <input type="text" name="query" placeholder="Search…" aria-label="Search">
+    </form>
+
+  </div>
+</nav>

@@ -1,0 +1,45 @@
+{% extends 'desktop/base.html' %}
+
+{% block title %}Search – {{ query }} | ZDN Home{% endblock %}
+
+{% block content %}
+<section class="search-page">
+  <div class="search-header">
+    <h1>Search results</h1>
+    <p>You searched for: <strong>"{{ query }}"</strong></p>
+  </div>
+
+  {% if products %}
+    <div class="search-grid">
+      {% for p in products %}
+        <a href="{{ url_for('product_detail', product_id=p.id) }}"
+           class="search-card">
+          <div class="search-card-image">
+            {% if p.images and p.images[0] %}
+              <img src="{{ url_for('static', filename=p.images[0]) }}"
+                   alt="{{ p.name }}">
+            {% endif %}
+          </div>
+          <div class="search-card-info">
+            <p class="search-card-room">
+              {{ p.room|capitalize if p.room else '' }}
+            </p>
+            <h2 class="search-card-name">{{ p.name }}</h2>
+            {% if p.collection %}
+              <p class="search-card-collection">{{ p.collection }} Collection</p>
+            {% endif %}
+            {% if p.category %}
+              <p class="search-card-category">{{ p.category|capitalize }}</p>
+            {% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="search-empty">
+      No pieces found. Try searching for
+      <em>“sofa”</em>, <em>“dining”</em>, <em>“Amira”</em>, etc.
+    </p>
+  {% endif %}
+</section>
+{% endblock %}

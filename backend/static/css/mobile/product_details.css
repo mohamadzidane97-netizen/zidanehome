@@ -1,0 +1,345 @@
+/* ================================
+   PRODUCT PAGE (MOBILE) – PREMIUM
+================================ */
+
+/* Page */
+.product-page {
+  display: flex;
+  flex-direction: column;
+  background: #f6f6f6;
+  color: #111;
+  font-family: "Cinzel", serif;
+  width: 100%;
+  overflow-x: clip;
+
+  /* ✅ space under your mobile navbar (adjust if needed) */
+  padding-top: 84px;
+}
+
+/* Keep content premium width on large phones */
+.product-page > * {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ================================
+   IMAGE CAROUSEL
+================================ */
+.product-carousel-wrapper {
+  position: relative;
+  width: calc(100% - 32px);
+  height: 55vh;
+  overflow: hidden;
+  background: #fff;
+
+  /* ✅ luxury card look */
+  border-radius: 16px;
+  margin: 0 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.product-carousel {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.product-carousel-item {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+}
+
+.product-carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff; /* ✅ white behind contain */
+  display: block;
+}
+
+/* ================================
+   CAROUSEL BUTTONS
+================================ */
+/* ================================
+   CAROUSEL BUTTONS – PREMIUM
+================================ */
+
+.product-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  width: 26px;              /* ✅ smaller circle */
+  height: 26px;             /* ✅ smaller circle */
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.22);   /* lighter */
+  border: none;                       /* cleaner */
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 16px;           /* arrow size */
+  line-height: 1;
+  cursor: pointer;
+  z-index: 5;
+
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+
+.product-carousel-btn.left { left: 10px; }
+.product-carousel-btn.right { right: 10px; }
+
+/* Hover (subtle) */
+.product-carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.38);
+}
+
+.product-carousel-btn:active {
+  transform: translateY(-50%) scale(0.92);
+}
+
+
+/* Hide buttons slightly when idle */
+.product-carousel-wrapper:not(:hover) .product-carousel-btn {
+  opacity: 0.75;
+}
+
+/* ===========================
+   FABRIC SWATCHES
+=========================== */
+.fabric-swatches {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px 2px;
+  flex-wrap: wrap;
+}
+
+.swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  background: var(--swatch-color, #ccc);
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.swatch:hover { transform: translateY(-1px); }
+.swatch:active { transform: scale(0.96); }
+
+.swatch.selected {
+  border-color: #111;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08);
+}
+
+/* subtle checker behind very light swatches */
+.swatch::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background-image:
+    linear-gradient(45deg, #e9e9e9 25%, transparent 25%),
+    linear-gradient(-45deg, #e9e9e9 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e9e9e9 75%),
+    linear-gradient(-45deg, transparent 75%, #e9e9e9 75%);
+  background-size: 12px 12px;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+  border-radius: 50%;
+  opacity: 0.28;
+}
+
+/* ================================
+   PRODUCT INFO SECTION
+================================ */
+.product-info {
+  padding: 20px 18px 22px;
+  background: #fff;
+  margin: 14px 16px 0;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.product-name {
+  font-size: 1.2rem;          /* ✅ smaller & cleaner */
+  letter-spacing: 0.08em;
+  margin: 0 0 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #111;
+}
+
+/* ================================
+   ORDER BUTTON
+================================ */
+.order-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #111;
+  color: #fff;
+  padding: 14px 0;
+  margin: 14px 0 18px;
+  border-radius: 999px;        /* ✅ premium */
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  transition: 0.2s ease;
+}
+
+.order-btn:hover { filter: brightness(0.9); }
+
+/* ================================
+   SEE FULL COLLECTION BUTTON
+================================ */
+.collection-toggle {
+  background: none;
+  border: none;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 6px 0;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* FULL COLLECTION SLIDER */
+.collection-slider-wrapper {
+  position: relative;
+  margin: 10px 0 8px;
+  padding: 8px 0;
+}
+
+.collection-slider {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 44px; /* space for nav buttons */
+}
+
+.collection-slider::-webkit-scrollbar { display: none; }
+
+.collection-card {
+  flex: 0 0 60%;
+  max-width: 280px;
+  scroll-snap-align: start;
+  background: #fff;
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+.collection-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;       /* ✅ no cropping */
+  background: #fff;          /* ✅ white behind contain */
+  display: block;
+  padding: 10px;
+}
+
+.collection-card-name {
+  font-weight: 650;
+  font-size: 0.95rem;
+  padding: 8px 10px 2px;
+  text-align: center;
+}
+
+.collection-card-tag {
+  font-size: 0.8rem;
+  color: #666;
+  padding: 0 10px 12px;
+  text-align: center;
+}
+
+/* Nav arrows */
+/* Full collection slider arrows – smaller + premium */
+.collection-nav{
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(17,17,17,0.28);
+  border: 1px solid rgba(255,255,255,0.55);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: 0.18s ease;
+}
+
+.collection-nav:hover{ background: rgba(17,17,17,0.45); }
+.collection-nav:active{ transform: translateY(-50%) scale(0.94); }
+
+.collection-nav.left{ left: 8px; }
+.collection-nav.right{ right: 8px; }
+
+/* ================================
+   DETAILS, DIMENSIONS, MATERIAL
+================================ */
+.details-section {
+  margin-top: 10px;
+}
+
+.details-text {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.7;
+  margin-top: 6px;
+}
+
+.info-line {
+  margin: 14px 0;
+}
+
+.info-line strong {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #777;
+    display: block;
+    margin-bottom: 6px;
+}
+
+
+.info-line p {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (hover: none) and (pointer: coarse){
+  .product-carousel-btn,
+  .collection-nav{
+    display: none;
+  }
+}

@@ -1,0 +1,65 @@
+{% extends 'mobile/base.html' %}
+
+{% block title %}
+Search – {{ query }}
+{% endblock %}
+
+{% block content %}
+
+<section class="m-search-results">
+
+  <!-- Search Header -->
+  <div class="m-search-header">
+    <h1>Search</h1>
+    <p>
+      Results for
+      <span class="m-search-query">“{{ query }}”</span>
+    </p>
+  </div>
+
+  {% if products and products|length > 0 %}
+    <div class="m-search-grid">
+
+      {% for product in products %}
+        <a
+          href="{{ url_for('product_detail', product_id=product.id) }}"
+          class="m-search-card"
+        >
+          <div class="m-search-image">
+            {% if product.images and product.images[0] %}
+              <img
+                src="{{ url_for('static', filename=product.images[0]) }}"
+                alt="{{ product.name }}"
+                loading="lazy"
+              >
+            {% endif %}
+          </div>
+
+          <div class="m-search-info">
+            <h3>{{ product.name }}</h3>
+
+            {% if product.collection %}
+              <p class="m-search-collection">
+                {{ product.collection }}
+              </p>
+            {% endif %}
+
+            {% if product.category %}
+              <p class="m-search-category">
+                {{ product.category|title }}
+              </p>
+            {% endif %}
+          </div>
+        </a>
+      {% endfor %}
+
+    </div>
+  {% else %}
+    <div class="m-search-empty">
+      <p>No results found.</p>
+    </div>
+  {% endif %}
+
+</section>
+
+{% endblock %}

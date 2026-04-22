@@ -1,0 +1,89 @@
+.m-search-results {
+  padding: 96px 16px 40px;
+  background: #f6f6f6;
+  min-height: 100vh;
+  font-family: "Cinzel", serif;
+}
+
+/* Header */
+.m-search-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.m-search-header h1 {
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+}
+
+.m-search-header p {
+  font-size: 13px;
+  color: #555;
+}
+
+.m-search-query {
+  font-weight: 600;
+  color: #111;
+}
+
+/* Grid */
+.m-search-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Card */
+.m-search-card {
+  background: #fff;
+  border-radius: 16px;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Image */
+.m-search-image {
+  background: #fff;
+  padding: 14px;
+}
+
+.m-search-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Info */
+.m-search-info {
+  padding: 10px 14px 14px;
+  text-align: center;
+}
+
+.m-search-info h3 {
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.m-search-collection {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.m-search-category {
+  font-size: 11px;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+/* Empty */
+.m-search-empty {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.6;
+  margin-top: 60px;
+}

@@ -1,0 +1,95 @@
+{% extends 'mobile/base.html' %}
+
+{% block title %}{{ product.name }} – ZDN Home{% endblock %}
+
+{% block content %}
+<section class="product-page">
+
+  <!-- 🖼️ Product Image Carousel -->
+  <div class="product-carousel-wrapper">
+    <button class="product-carousel-btn left" onclick="scrollProductCarousel('left')" aria-label="Previous image">‹</button>
+
+    <div class="product-carousel" id="product-carousel">
+      {% for img in product.images %}
+      <div class="product-carousel-item">
+        <img
+          src="{{ url_for('static', filename=img) }}"
+          alt="{{ product.name }} – view {{ loop.index }}"
+          loading="lazy"
+          decoding="async">
+      </div>
+      {% endfor %}
+    </div>
+
+    <button class="product-carousel-btn right" onclick="scrollProductCarousel('right')" aria-label="Next image">›</button>
+  </div>
+
+  <!-- 🎨 Fabric Swatches (Color Circles) -->
+  {% if product.fabrics and product.fabrics|length > 0 %}
+  <div class="fabric-swatches" id="fabric-swatches" aria-label="Fabric options">
+    {% for f in product.fabrics %}
+      <button
+        class="swatch"
+        style="--swatch-color: {{ f.hex }};"
+        data-images='{{ f.images | tojson }}'
+        data-name="{{ f.name }}"
+        aria-label="{{ f.name }}"
+        title="{{ f.name }}">
+      </button>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- 📄 Product Info Section -->
+  <div class="product-info">
+    <h2 class="product-name">{{ product.name }}</h2>
+
+    <!-- 🚀 Order Now Button -->
+    <a
+      href="https://wa.me/201111057128?text=Hello%20I%20am%20interested%20in%20*{{ product.name }}*.%0AHere%20is%20the%20product%20link:%20{{ request.url }}"
+      class="order-btn"
+      target="_blank" rel="noopener">Order Now</a>
+
+    <!-- 🔗 Full Collection Slider -->
+    <button class="collection-toggle" onclick="toggleCollection()">See Full Collection</button>
+
+    <div class="collection-slider-wrapper" id="collection-slider-wrapper" style="display:none;">
+      <button class="collection-nav left" onclick="scrollCollection('left')" aria-label="Scroll left">‹</button>
+
+      <div class="collection-slider" id="collection-slider">
+        {% for item in related_products %}
+          <a href="{{ url_for('product_detail', product_id=item.id) }}" class="collection-card" aria-label="{{ item.name }}">
+            <img
+              src="{{ url_for('static', filename=item.images[0]) }}"
+              alt="{{ item.name }}"
+              loading="lazy"
+              decoding="async">
+            <div class="collection-card-name">{{ item.name }}</div>
+            <div class="collection-card-tag">{{ item.category|title }}</div>
+          </a>
+        {% endfor %}
+      </div>
+
+      <button class="collection-nav right" onclick="scrollCollection('right')" aria-label="Scroll right">›</button>
+    </div>
+
+    <!-- 📜 Product Details (always visible) -->
+    <div class="details-section">
+      <strong>Details:</strong>
+      <p class="details-text">{{ product.description }}</p>
+    </div>
+
+    <!-- 📏 Dimensions -->
+    <div class="info-line">
+      <strong>Dimensions:</strong>
+      <p>{{ product.dimensions }}</p>
+    </div>
+
+    <!-- 🪵 Material -->
+    <div class="info-line">
+      <strong>Material:</strong>
+      <p>{{ product.material }}</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

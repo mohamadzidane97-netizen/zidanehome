@@ -1,0 +1,643 @@
+/* ================================
+   GLOBAL / RESET
+   ================================ */
+
+body {
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+}
+
+/* ================================
+   HERO SECTION (VIDEO)
+   ================================ */
+
+.hero-visual {
+  position: relative;
+  height: 90vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* HERO TEXT OVERLAY */
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 48px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.05)
+  );
+
+  text-align: center;
+  color: #f7f3eb;
+  font-family: "Cinzel", serif;
+  text-transform: uppercase;
+}
+
+.hero-text-block {
+  max-width: 720px;
+}
+
+.hero-kicker {
+  font-size: 0.8rem;
+  margin-bottom: 12px;
+  opacity: 0.9;
+  letter-spacing: 0.18em;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  margin-bottom: 14px;
+  letter-spacing: 0.22em;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  opacity: 0.9;
+  text-transform: none;
+}
+
+/* ================================
+   COLLECTIONS SECTION
+   ================================ */
+
+.collections-section {
+  padding: 30px 0 88px;
+}
+
+.collections-section h2 {
+  text-align: center;
+  margin-bottom: 36px;
+  color: #222;
+  font-family: "Cinzel", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ================================
+   COLLECTION CAROUSEL WRAPPER
+   ================================ */
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.sections-carousel {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ================================
+   CATEGORY CARDS (LIVING, DINING...)
+   ================================ */
+
+.section-card {
+  min-width: calc(45% - 16px); /* ~2 cards visible */
+  flex-shrink: 0;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 1px;
+  overflow: hidden;
+
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+  box-shadow: none; /* remove grey shadow */
+
+  transform: translateY(0);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.section-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Card Images */
+
+.section-card img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  background: #ffffff;
+
+  transition:
+    transform 1.2s cubic-bezier(0.19, 1, 0.22, 1),
+    filter 0.8s ease,
+    opacity 0.8s ease;
+
+  will-change: transform;
+}
+
+/* Card Label */
+
+.section-label {
+  position: absolute;
+  left: 24px;
+  bottom: 22px;
+  z-index: 2;
+
+  color: #ffffff;
+  font-family: "Cinzel", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  font-size: 0.9rem;
+}
+
+/* Gradient Overlay on Cards */
+
+.section-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.20),
+    rgba(0, 0, 0, 0.00)
+  );
+
+  pointer-events: none;
+}
+
+/* Premium Hover Animation */
+
+.section-card:hover img {
+  transform: scale(1.12);
+  filter: brightness(1.10);
+}
+
+/* ================================
+   CAROUSEL ARROWS (Premium)
+   ================================ */
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+
+  background: rgba(255, 255, 255, 0.85);
+  color: #333;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+
+  opacity: 0;
+  pointer-events: none;
+
+  backdrop-filter: blur(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+.carousel-wrapper:hover .carousel-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.carousel-btn.left {
+  left: 10px;
+}
+
+.carousel-btn.right {
+  right: 10px;
+}
+
+.carousel-btn:hover {
+  background: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* ==============================================
+   FEATURED COLLECTION – AMIRA
+   ============================================== */
+
+.featured-collection {
+  position: relative;
+  max-width: 1250px;
+  margin: 10px auto;
+  border-radius: 24px;
+  overflow: hidden;
+
+  /* Old “big bar” feeling, but flexible */
+  min-height: 420px;
+  height: 70vh;
+  max-height: 620px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 60px;
+
+  /* soft luxury background */
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+}
+
+/* LEFT TEXT BLOCK */
+
+.featured-content {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  color: #221f1a;
+}
+
+.featured-kicker {
+  font-family: "Cinzel", serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.featured-title {
+  font-family: "Cinzel", serif;
+  font-size: 2rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.featured-desc {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+/* BUTTON */
+
+.featured-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 999px;
+  border: 1px solid #221f1a;
+  text-decoration: none;
+  color: #221f1a;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+}
+
+.featured-btn:hover {
+  background: #221f1a;
+  color: #ffffff;
+}
+
+/* RIGHT SOFA VISUAL */
+
+.featured-visual {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+}
+
+.featured-image {
+  max-width: 100%;
+  max-height: 90%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: contain;          /* show full sofa, no crop */
+  filter: drop-shadow(0 18px 32px rgba(0,0,0,0.18));
+}
+
+/* ================================
+   OUR DESIGN PHILOSOPHY
+   ================================ */
+
+.philosophy-section {
+  padding: 80px 0 90px;
+  background: #ffffff;
+}
+
+.philosophy-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 40px;
+  align-items: center;
+}
+
+/* LEFT IMAGE */
+
+.philosophy-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  display: block;
+  filter: saturate(1.05);
+}
+
+/* RIGHT TEXT BLOCK */
+
+.philosophy-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.philosophy-header {
+  text-align: left;
+}
+
+.philosophy-kicker {
+  font-family: "Cinzel", serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 10px;
+}
+
+.philosophy-title {
+  font-family: "Cinzel", serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.philosophy-intro {
+  max-width: 620px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #555;
+  letter-spacing: 0.03em;
+}
+
+/* Pillars grid */
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 26px;
+}
+
+.philosophy-item h3 {
+  font-family: "Cinzel", serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.philosophy-item p {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #666;
+}
+
+/* ============================
+   SIGNATURE SECTION (DESKTOP)
+   ============================ */
+
+.signature-section {
+  padding: 70px 0 90px;
+  background: #ffffff; /* same as other sections */
+}
+
+.signature-inner {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Header */
+
+.signature-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.signature-header h2 {
+  font-family: "Cinzel", serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin: 0 auto 10px;
+  color: #222;
+  opacity: 0.85;
+}
+
+.signature-header p {
+  margin: 0 auto;
+  max-width: 620px; /* perfect width */
+  text-align: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* Track – horizontal strip similar feeling to carousel */
+
+.signature-track {
+  margin-top: 26px;
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-snap-type: x mandatory;
+}
+
+.signature-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.signature-track::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.signature-track::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+}
+
+/* Card – match section-card style (light, no heavy shadow) */
+
+.signature-card {
+  flex: 0 0 calc(25% - 18px); /* 4 cards visible on large screens */
+  min-width: 260px;
+  max-width: 290px;
+
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 1px;
+  overflow: hidden;
+
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+  box-shadow: none;
+
+  transform: translateY(0);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  scroll-snap-align: start;
+}
+
+.signature-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Card image – same feeling as section-card img */
+
+.signature-image-wrapper {
+  width: 100%;
+  height: 320px; /* a bit shorter than big category cards */
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.signature-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+
+  transition:
+    transform 1.2s cubic-bezier(0.19, 1, 0.22, 1),
+    filter 0.8s ease,
+    opacity 0.8s ease;
+  will-change: transform;
+}
+
+.signature-card:hover .signature-image-wrapper img {
+  transform: scale(1.10);
+  filter: brightness(1.08);
+}
+
+/* Text block below image */
+
+.signature-info {
+  padding: 14px 4px 10px;
+}
+
+.signature-collection {
+  font-family: "Cinzel", serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #777;
+  margin: 0 0 6px;
+}
+
+.signature-name {
+  font-family: "Cinzel", serif;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+  color: #222;
+}
+
+.signature-category {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  color: #777;
+  margin: 0;
+}
+
+.signature-empty {
+  margin-top: 22px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* ============================================
+   TABLET LAYOUT (768px – 1024px)
+   ============================================ */
+/* TABLET (iPad, etc.) 768px – 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+ 
+
+  /* Hero section */
+  .hero-visual {
+    height: 85vh;                /* not full 100vh so it feels lighter */
+    width: 100vw;
+    margin-left: calc(-50vw +-50%);
+}
+
+  .hero-overlay {
+    align-items: flex-end;       /* push text towards lower middle */
+    padding-bottom: 80px;
+    padding-inline: 48px;
+  }
+
+  .hero-text-block {
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-kicker {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 14px;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
