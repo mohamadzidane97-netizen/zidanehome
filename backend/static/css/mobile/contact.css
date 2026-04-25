@@ -1,0 +1,73 @@
+.m-contact {
+  background: #fff;
+  min-height: 100vh;
+  padding: 28px 18px 40px;
+}
+
+.m-contact-hero {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.m-contact-hero span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #9a7a38;
+}
+
+.m-contact-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  font-weight: 500;
+  margin: 10px 0;
+  color: #111;
+}
+
+.m-contact-hero p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #777;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.m-contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-row {
+  display: block;
+  padding: 18px;
+  background: #f7f3ee;
+  text-decoration: none;
+  color: #111;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.contact-row span {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #9a7a38;
+  margin-bottom: 6px;
+}
+
+.contact-row p {
+  margin: 0;
+  font-size: 14px;
+  color: #222;
+}
+
+.contact-row:active {
+  background: #111;
+}
+
+.contact-row:active span,
+.contact-row:active p {
+  color: #fff;
+}

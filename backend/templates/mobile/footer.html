@@ -1,18 +1,35 @@
 <footer class="mobile-footer">
-    <div class="footer-top">
-      <div class="footer-logo">
-        <img src="{{ url_for('static', filename='images/logo/1.png') }}" alt="ZDN Home Logo">
-      </div>
-      <div class="footer-links">
-        <a href="{{ url_for('index') }}">Home</a>
-        <a href="{{ url_for('sofa') }}">Collections</a>
-        <a href="{{ url_for('about') }}">About</a>
-        <a href="{{ url_for('contact') }}">Contact</a>
-      </div>
+
+  <div class="footer-top">
+
+    <div class="footer-logo">
+      <p>Zidane Home</p>
     </div>
-  
-    <div class="footer-bottom">
-      <p>&copy; {{ current_year }} ZDN Home. All Rights Reserved.</p>
+
+    <div class="footer-links">
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('collections') }}">Collections</a>
+      <a href="{{ url_for('about') }}">About</a>
+      <a href="{{ url_for('contact') }}">Contact</a>
     </div>
-  </footer>
-  
+
+  </div>
+
+  <!-- CTA -->
+  <div class="footer-cta">
+    <a href="https://wa.me/201111057128" target="_blank">
+      Contact us on WhatsApp
+    </a>
+  </div>
+
+  <!-- Social -->
+  <div class="footer-social">
+    <a href="https://www.instagram.com/zidane.home"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {{ current_year }} ZDN Home. All Rights Reserved.</p>
+  </div>
+
+</footer>

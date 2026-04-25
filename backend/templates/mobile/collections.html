@@ -1,0 +1,43 @@
+{% extends 'mobile/base.html' %}
+
+{% block title %}Collections – ZDN Home{% endblock %}
+
+{% block content %}
+
+<section class="m-collections">
+
+  <div class="m-collections-header">
+    <h1>Collections</h1>
+    <p>Explore our curated spaces</p>
+  </div>
+
+  <div class="m-collections-grid">
+
+    <a href="{{ url_for('living_room') }}" class="collection-card">
+      <img src="{{ url_for('static', filename='images/carousel-section/living.jfif') }}">
+      <div class="overlay">
+        <h2>Living</h2>
+      </div>
+    </a>
+
+    <a href="{{ url_for('dining_room') }}" class="collection-card">
+      <img src="{{ url_for('static', filename='images/carousel-section/dining.jpg') }}">
+      <div class="overlay">
+        <h2>Dining</h2>
+      </div>
+    </a>
+
+    <a href="{{ url_for('bedroom') }}" class="collection-card">
+      <img src="{{ url_for('static', filename='images/carousel-section/bedroom.jpg') }}">
+      <div class="overlay">
+        <h2>Bedroom</h2>
+      </div>
+    </a>
+
+   
+
+  </div>
+
+</section>
+
+{% endblock %}

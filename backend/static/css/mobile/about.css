@@ -1,0 +1,105 @@
+.m-about {
+  background: #fff;
+}
+
+/* HERO */
+.m-about-hero {
+  position: relative;
+  height: 45vh;
+  min-height: 280px;
+  overflow: hidden;
+}
+
+.m-about-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.m-about-hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  color: #fff;
+}
+
+.brand-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.hero-text p {
+ font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+/* INTRO */
+.m-about-intro {
+  padding: 24px 18px;
+  text-align: center;
+}
+
+.m-about-intro p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666;
+}
+
+/* SECTIONS */
+.m-about-section {
+  padding: 24px 18px;
+}
+
+.m-about-section h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.m-about-section p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #666;
+}
+
+/* DARK SECTION */
+.m-about-section.dark {
+  background: #111;
+}
+
+.m-about-section.dark h2 {
+  color: #fff;
+}
+
+.m-about-section.dark p {
+  color: #ccc;
+}
+
+/* CTA */
+.m-about-cta {
+  padding: 30px 18px;
+  text-align: center;
+}
+
+.m-about-cta a {
+  display: inline-block;
+  padding: 12px 30px;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.m-about-cta a:hover {
+  background: #d4af37;
+  color: #000;
+}

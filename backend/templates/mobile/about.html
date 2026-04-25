@@ -1,0 +1,52 @@
+{% extends 'mobile/base.html' %}
+
+{% block title %}About – ZDN Home{% endblock %}
+
+{% block content %}
+
+<section class="m-about">
+
+  <!-- HERO -->
+  <div class="m-about-hero">
+    <img src="{{ url_for('static', filename='images/philosophy/fur.jfif') }}" alt="ZDN Home">
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h1>Zidane Home</h1>
+      <p>Modern Luxury Living</p>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="m-about-intro">
+    <p>
+      At Zidane Home, we create furniture that blends modern elegance with timeless comfort.  
+      Every piece is designed to elevate your living experience.
+    </p>
+  </div>
+
+  <!-- STORY -->
+  <div class="m-about-section">
+    <h2>Our Story</h2>
+    <p>
+      Founded with a passion for design and craftsmanship, Zidane Home represents a new vision of modern luxury.  
+      We focus on clean lines, premium materials, and refined details.
+    </p>
+  </div>
+
+  <!-- VISION -->
+  <div class="m-about-section dark">
+    <h2>Our Vision</h2>
+    <p>
+      To redefine modern living by creating spaces that are both functional and beautiful.  
+      We believe that furniture should not only look good, but feel right.
+    </p>
+  </div>
+
+  <!-- CTA -->
+  <div class="m-about-cta">
+    <a href="{{ url_for('contact') }}">Contact Us</a>
+  </div>
+
+</section>
+
+{% endblock %}

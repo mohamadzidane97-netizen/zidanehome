@@ -16,13 +16,13 @@
        href="{{ url_for('dining_room', filter='all') }}">All</a>
 
     <a class="{{ 'active' if selected_filter=='dining_table' else '' }}"
-       href="{{ url_for('dining_room', filter='dining_table') }}">Tables</a>
+       href="{{ url_for('dining_room', filter='diningtable') }}">Tables</a>
 
     <a class="{{ 'active' if selected_filter=='dining_chair' else '' }}"
-       href="{{ url_for('dining_room', filter='dining_chair') }}">Chairs</a>
+       href="{{ url_for('dining_room', filter='chair') }}">Chairs</a>
 
     <a class="{{ 'active' if selected_filter=='buffet' else '' }}"
-       href="{{ url_for('dining_room', filter='buffet') }}">Buffets</a>
+       href="{{ url_for('dining_room', filter='sideboard') }}">Buffets</a>
 
     <a class="{{ 'active' if selected_filter=='console' else '' }}"
        href="{{ url_for('dining_room', filter='console') }}">Consoles</a>

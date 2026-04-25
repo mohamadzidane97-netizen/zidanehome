@@ -36,10 +36,12 @@
                 <ul class="submenu second-slide">
                     <button class="close-btn"><i class="fas fa-times"></i></button>
                     <li><a href="{{ url_for('living_room' , filter='sofa') }}">Sofa</a></li>
+                    <li><a href="{{ url_for('living_room' , filter='armchair') }}">Armchair</a></li>
                     <li><a href="{{ url_for('living_room' , filter='coffeetable') }}">Coffee Table</a></li>
                     <li><a href="{{ url_for('living_room' , filter='sidetable') }}">Side Table</a></li>
-                    <li><a href="#">Console</a></li>
-                    <li><a href="#">TV Unit</a></li>
+                    <li><a href="{{ url_for('living_room' , filter='console') }}">console</a></li>
+                    <li><a href="{{ url_for('living_room' , filter='sidetable') }}">Tv unit</a></li>
+                    
                 </ul>
             </li>
 
@@ -47,9 +49,9 @@
                 <a href="#">Dining</a>
                 <ul class="submenu second-slide">
                     <button class="close-btn"><i class="fas fa-times"></i></button>
-                    <li><a href="{{ url_for('dining_room' , filter='diningroom') }}">Dining Room</a></li>
-                    <li><a href="{{ url_for('dining_room' , filter='diningchair') }}">Dining Chair</a></li>
-                    <li><a href="{{ url_for('dining_room' , filter='buffets') }}">Buffets</a></li>
+                    <li><a href="{{ url_for('dining_room' , filter='diningtable') }}">Dining Table</a></li>
+                    <li><a href="{{ url_for('dining_room' , filter='chair') }}">Dining Chair</a></li>
+                    <li><a href="{{ url_for('dining_room' , filter='sideboard') }}">Buffets</a></li>
                 </ul>
             </li>
 
@@ -58,6 +60,7 @@
                 <ul class="submenu second-slide">
                     <button class="close-btn"><i class="fas fa-times"></i></button>
                     <li><a href="{{ url_for('bedroom' , filter='bed') }}">Bed</a></li>
+                    <li><a href="{{ url_for('bedroom' , filter='nightstand') }}">nightstand</a></li>
                     <li><a href="{{ url_for('bedroom' , filter='wardrobe') }}">Wardrobe</a></li>
                 </ul>
             </li>
@@ -79,14 +82,6 @@
                     <li><a href="{{ url_for('kitchen' , filter='island') }}">Kitchen Island</a></li>
                 </ul>
             </li>
-             <li class="has-submenu">
-                <a href="#">Kitchen</a>
-                <ul class="submenu second-slide">
-                    <button class="close-btn"><i class="fas fa-times"></i></button>
-                    <li><a href="{{ url_for('kitchen' , filter='cabinet') }}">Cabinet</a></li>
-                    <li><a href="{{ url_for('kitchen' , filter='island') }}">Kitchen Island</a></li>
-                </ul>
-            </li>
-        </ul>
+                     </ul>
     </nav>
 </header>

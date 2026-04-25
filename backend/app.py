@@ -429,7 +429,7 @@ ROOM_CONFIG = {
         "title": "Dining Room",
     },
     "bedroom": {
-        "template": "bedroom.html",
+        "template": "bedroom_room.html",
         "title": "Bedroom",
     },
     "office": {
@@ -566,6 +566,11 @@ def dining_room():
 
 @app.route('/bedroom')
 def bedroom():
+    return render_room_page("bedroom")
+
+
+@app.route('/bedroom_room')
+def bedroom_room():
     return render_room_page("bedroom")
 
 

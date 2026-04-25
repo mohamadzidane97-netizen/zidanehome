@@ -1,0 +1,60 @@
+/* force collections page to full mobile viewport */
+.m-collections {
+  width: 100vw !important;
+  max-width: none !important;
+  margin-left: 50% !important;
+  transform: translateX(-50%) !important;
+  padding: 0 !important;
+  background: #fff;
+}
+
+.m-collections-header {
+  padding: 22px 18px 18px;
+  text-align: center;
+}
+
+.m-collections-grid {
+  width: 100vw !important;
+  max-width: none !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background-color: #fff;
+}
+
+.collection-card {
+  width: 100vw !important;
+  max-width: none !important;
+  height: 42vh;
+  min-height: 220px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  background: #fff;
+}
+
+.collection-card img {
+  width: 100vw !important;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.collection-card .overlay {
+  position: absolute;
+  inset: 0;
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collection-card h2 {
+  color: #fff;
+  font-size: 22px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
